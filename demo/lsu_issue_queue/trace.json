@@ -1,0 +1,44 @@
+[
+    {
+        "mnemonic": "div",
+        "rs1": 1,
+        "rs2": 2,
+        "rd": 10
+    },
+    {
+        "mnemonic": "lw",
+        "rs1": 10,
+        "rd": 3,
+        "vaddr": "0x1000"
+    },
+    {
+        "mnemonic": "lw",
+        "rs1": 0,
+        "rd": 4,
+        "vaddr": "0x2000"
+    },
+    {
+        "mnemonic": "lw",
+        "rs1": 0,
+        "rd": 5,
+        "vaddr": "0x3000"
+    },
+    {
+        "mnemonic": "sw",
+        "rs1": 0,
+        "rs2": 4,
+        "vaddr": "0x4000"
+    },
+    {
+        "mnemonic": "lw",
+        "rs1": 0,
+        "rd": 6,
+        "vaddr": "0x4000"
+    },
+    {
+        "mnemonic": "add",
+        "rs1": 6,
+        "rs2": 5,
+        "rd": 7
+    }
+]

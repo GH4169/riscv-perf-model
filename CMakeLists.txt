@@ -83,6 +83,9 @@ add_subdirectory (mss)
 # Add testing, but do not build as part of the 'all' target
 add_subdirectory (test EXCLUDE_FROM_ALL)
 
+# Educational, standalone demos
+add_subdirectory (demo/lsu_issue_queue EXCLUDE_FROM_ALL)
+
 # The simulator
 add_executable(olympia
   sim/OlympiaSim.cpp

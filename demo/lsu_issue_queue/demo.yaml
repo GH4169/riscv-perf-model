@@ -1,0 +1,60 @@
+top.cpu.core0:
+  fetch.params.num_to_fetch: 2
+  icache.params:
+    l1_always_hit: true
+    cache_latency: 0
+  decode.params.num_to_decode: 2
+  rename.params.num_to_rename: 2
+  dispatch.params.num_to_dispatch: 2
+  rob.params.num_to_retire: 2
+  mmu.params.tlb_always_hit: true
+  lsu.params:
+    ldst_inst_queue_size: 4
+    replay_buffer_size: 8
+    replay_issue_delay: 3
+    allow_data_forwarding: true
+    mmu_lookup_stage_length: 1
+    cache_lookup_stage_length: 1
+    cache_read_stage_length: 1
+  dcache.params:
+    l1_always_hit: true
+    l1_size_kb: 16
+
+top.cpu.core0.extension.core_extensions:
+  pipelines:
+    [
+      ["sys", "int", "mul", "i2f", "cmov", "div", "vset"],
+      ["float", "faddsub", "fmac", "f2i"],
+      ["br"],
+      ["vint", "vdiv", "vmul", "vfixed", "vmask", "vmv", "v2s", "vfloat", "vfdiv", "vfmul", "vpermute", "vload", "vstore"]
+    ]
+  issue_queue_to_pipe_map:
+    [
+      ["0"],
+      ["1"],
+      ["2"],
+      ["3"]
+    ]
+
+top.cpu.core0.rename.scoreboards:
+  integer.params.latency_matrix: |
+      [["",      "lsu", "iq0", "iq1", "iq2", "iq3"],
+      ["lsu",    1,     1,     1,     1,     1],
+      ["iq0",    1,     1,     1,     1,     1],
+      ["iq1",    1,     1,     1,     1,     1],
+      ["iq2",    1,     1,     1,     1,     1],
+      ["iq3",    1,     1,     1,     1,     1]]
+  float.params.latency_matrix: |
+      [["",      "lsu", "iq0", "iq1", "iq2", "iq3"],
+      ["lsu",    1,     1,     1,     1,     1],
+      ["iq0",    1,     1,     1,     1,     1],
+      ["iq1",    1,     1,     1,     1,     1],
+      ["iq2",    1,     1,     1,     1,     1],
+      ["iq3",    1,     1,     1,     1,     1]]
+  vector.params.latency_matrix: |
+      [["",      "lsu", "iq0", "iq1", "iq2", "iq3"],
+      ["lsu",    1,     1,     1,     1,     1],
+      ["iq0",    1,     1,     1,     1,     1],
+      ["iq1",    1,     1,     1,     1,     1],
+      ["iq2",    1,     1,     1,     1,     1],
+      ["iq3",    1,     1,     1,     1,     1]]

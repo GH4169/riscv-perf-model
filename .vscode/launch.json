@@ -1,0 +1,79 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "LSU Demo: conservative - issue arbitration",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build-demo/demo/lsu_issue_queue/lsu_issue_queue_demo",
+            "args": [
+                "--input-file",
+                "${workspaceFolder}/demo/lsu_issue_queue/trace.json",
+                "-c",
+                "${workspaceFolder}/demo/lsu_issue_queue/demo.yaml",
+                "-p",
+                "top.cpu.core0.lsu.params.allow_speculative_load_exec",
+                "false",
+                "-l",
+                "top.cpu.core0.lsu",
+                "info",
+                "${workspaceFolder}/build-demo/demo/lsu_issue_queue/output/vscode-conservative.lsu.log"
+            ],
+            "cwd": "${workspaceFolder}/build-demo",
+            "stopAtEntry": true,
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "${workspaceFolder}/.vscode/gdb-no-debuginfod.sh",
+            "preLaunchTask": "LSU Demo: prepare debug",
+            "setupCommands": [
+                {
+                    "description": "Trust GDB helpers embedded in this locally built executable",
+                    "text": "-gdb-set auto-load safe-path $debugdir:$datadir:${workspaceFolder}/build-demo/demo/lsu_issue_queue/lsu_issue_queue_demo",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Enable GDB pretty printing",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "LSU Demo: speculative - load abort",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build-demo/demo/lsu_issue_queue/lsu_issue_queue_demo",
+            "args": [
+                "--input-file",
+                "${workspaceFolder}/demo/lsu_issue_queue/trace.json",
+                "-c",
+                "${workspaceFolder}/demo/lsu_issue_queue/demo.yaml",
+                "-p",
+                "top.cpu.core0.lsu.params.allow_speculative_load_exec",
+                "true",
+                "-l",
+                "top.cpu.core0.lsu",
+                "info",
+                "${workspaceFolder}/build-demo/demo/lsu_issue_queue/output/vscode-speculative.lsu.log"
+            ],
+            "cwd": "${workspaceFolder}/build-demo",
+            "stopAtEntry": true,
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "${workspaceFolder}/.vscode/gdb-no-debuginfod.sh",
+            "preLaunchTask": "LSU Demo: prepare debug",
+            "setupCommands": [
+                {
+                    "description": "Trust GDB helpers embedded in this locally built executable",
+                    "text": "-gdb-set auto-load safe-path $debugdir:$datadir:${workspaceFolder}/build-demo/demo/lsu_issue_queue/lsu_issue_queue_demo",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Enable GDB pretty printing",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}

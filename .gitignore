@@ -36,6 +36,8 @@
 [Dd]ebug
 [Pp]rofile
 [Ff]ast[Dd]ebug
+/build-demo/
+/error-dump.dbg
 
 # Backup files
 *~
