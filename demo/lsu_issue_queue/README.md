@@ -3,6 +3,10 @@
 For a step-by-step Chinese tutorial, including VS Code debugging, see
 [`LEARNING_GUIDE.zh-CN.md`](LEARNING_GUIDE.zh-CN.md).
 
+If you plan to run `run_demo.sh conservative` while stepping through the code, start with the
+focused Chinese breakpoint guide:
+[`DEBUG_CONSERVATIVE.zh-CN.md`](DEBUG_CONSERVATIVE.zh-CN.md).
+
 This demo runs the real Olympia core and prints the internal LSU issue queue state one cycle at a
 time. It compares conservative load scheduling with speculative load execution using the same
 seven-instruction JSON trace.

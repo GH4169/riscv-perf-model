@@ -2,6 +2,10 @@
 
 这份文档用于带着代码学习 Olympia 的访存指令发射队列。Demo 使用的不是重新编写的简化 LSU，而是项目中的真实 `olympia::LSU`，只增加了一个只读观察器来逐周期打印内部状态。
 
+如果你准备第一次运行 `run_demo.sh conservative` 并边打断点边看代码，建议先读
+[`DEBUG_CONSERVATIVE.zh-CN.md`](DEBUG_CONSERVATIVE.zh-CN.md)。那份手册把启动命令、断点顺序、
+观察变量和一次实际运行的周期对照单独列出；本指南适合在跑通后系统理解 conservative/speculative 的完整差异。
+
 ## 1. 学习目标
 
 完成本指南后，应当能够回答下面几个问题：
@@ -23,7 +27,7 @@
 | `demo/lsu_issue_queue/demo.yaml` | 缩小队列并固定 MMU、Cache 行为，减少无关随机性 |
 | `demo/lsu_issue_queue/run_demo.sh` | 配置、编译并运行保守和推测模式 |
 | `.vscode/tasks.json` | VS Code 配置和编译任务 |
-| `.vscode/launch.json` | 三套 GDB 调试入口 |
+| `.vscode/launch.json` | conservative 和 speculative 两套 GDB 调试入口 |
 
 观察器使用 `LSU.hpp` 中已有的 `friend class LSUTester` 访问内部成员，没有修改生产 LSU 的调度行为。
 
